@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Invisible Cafeteria</title>
+<style>
+:root{--bg:#f3f6f4;--card:#fff;--tx:#14201a;--mu:#5f6f66;--bd:#dfe7e2;--ac:#0f8a5f;--ac2:#0b6b4a;--bl:#2f6fed;--ok:#0f8a5f;--wa:#c27a00;--er:#d23b34;--sh:0 1px 2px rgba(20,32,26,.06),0 6px 18px rgba(20,32,26,.06)}
+[data-theme=dark]{--bg:#0f1512;--card:#17201b;--tx:#e8f0ea;--mu:#8fa196;--bd:#27342c;--ac:#34c58a;--ac2:#1f9d6a;--bl:#6b9bff;--ok:#34c58a;--wa:#f0b04a;--er:#ff7b73;--sh:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#0b6b4a,#16a36f 60%,#6fd3a5);color:#fff;padding:18px 20px 70px}
+.hw{max-width:1280px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{display:flex;align-items:center;gap:12px}.logo b{font-size:22px;letter-spacing:-.3px}.logo small{display:block;opacity:.85}.mark{font-size:32px;background:rgba(255,255,255,.18);border-radius:14px;padding:4px 10px}
+.live{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);border-radius:99px;padding:3px 10px;font-size:12px}.live i{width:8px;height:8px;border-radius:50%;background:#7dffb8;animation:p 1.6s infinite}@keyframes p{50%{opacity:.3}}
+main{max-width:1280px;margin:-52px auto 30px;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:var(--sh);padding:14px 16px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:14px}
+.kpi{display:flex;gap:12px;align-items:center}.ic{font-size:24px;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 15%,transparent)}.kv{font-size:26px;font-weight:700;line-height:1.1}.kl{color:var(--mu);font-size:12px}
+.safe{display:flex;gap:10px;align-items:flex-start;border-left:5px solid var(--er);margin-bottom:14px}.safe b{color:var(--er)}
+.bar2{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-bottom:14px;position:sticky;top:0;z-index:5}
+.bar2 label{display:flex;align-items:center;gap:6px;white-space:nowrap}.chip{display:inline-flex;gap:4px;align-items:center;border:1px solid var(--bd);border-radius:99px;padding:2px 10px;cursor:pointer;user-select:none}.chip:has(input:checked){background:var(--ac);color:#fff;border-color:var(--ac)}.chip input{display:none}
+select,input[type=password],button{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:5px 11px}
+button{cursor:pointer;font-weight:600}button:hover{border-color:var(--ac)}button.p{background:var(--ac);color:#fff;border-color:var(--ac)}button.p:hover{background:var(--ac2)}
+input[type=range]{accent-color:var(--ac);width:190px}.clock{font:700 18px ui-monospace,Consolas,monospace;color:var(--ac)}
+h2{font-size:16px;margin:22px 4px 10px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}
+.bc{display:flex;flex-direction:column;gap:8px;border-top:4px solid var(--s)}.bc .t{display:flex;justify-content:space-between;gap:8px}.bc .n{font-weight:700;font-size:15px}.bc .m{color:var(--mu);font-size:12px}
+.pill{border-radius:99px;padding:2px 10px;font-size:12px;font-weight:600;color:var(--s);background:color-mix(in srgb,var(--s) 14%,transparent);white-space:nowrap;height:fit-content}
+.tags{display:flex;flex-wrap:wrap;gap:5px}.tag{font-size:11px;border:1px solid var(--bd);border-radius:6px;padding:0 7px;color:var(--mu)}.tag.al{border-color:var(--wa);color:var(--wa)}
+.tm{height:7px;border-radius:5px;background:var(--bd);overflow:hidden}.tm i{display:block;height:100%;border-radius:5px}.why{font-size:12.5px;color:var(--mu)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:12px}
+.pt{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}.pt:last-child{border:0}.pt .g{flex:1}
+.fill{height:10px;border-radius:6px;background:var(--bd);overflow:hidden;display:flex}.fill i{height:100%}
+.tl div{padding:5px 0 5px 14px;border-left:2px solid var(--bd);position:relative;font-size:12.5px;color:var(--mu)}.tl div:before{content:"";position:absolute;left:-6px;top:11px;width:10px;height:10px;border-radius:50%;background:var(--ac)}.tl b{color:var(--tx)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--bd)}th{color:var(--mu);font-weight:500}svg text{fill:var(--mu);font-size:10.5px}
+.tg{background:rgba(255,255,255,.2);color:#fff;border-color:transparent}
+
+.imp{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;background:linear-gradient(120deg,#0b6b4a,#16a36f);color:#fff;border:0;margin-bottom:14px}.imp b{font-size:28px;display:block;line-height:1.1}.imp small{opacity:.85}
+.al2{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.al2 span{background:color-mix(in srgb,var(--wa) 16%,var(--card));border:1px solid var(--wa);border-radius:10px;padding:5px 12px;font-weight:600}
+.flow{stroke-dasharray:6 5;animation:d 1s linear infinite}@keyframes d{to{stroke-dashoffset:-11}}
+.node{filter:drop-shadow(0 2px 4px rgba(0,0,0,.18))}.mp text{fill:var(--tx);font-size:11px;font-weight:600}
+.frm{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.frm input{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:5px 10px;width:90px}
+</style></head><body data-theme="light">
+<header><div class="hw"><div class="logo"><span class="mark">🍽️</span><div><b>The Invisible Cafeteria</b><small>Predict · Detect · Redistribute safely</small></div></div>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="live"><i></i>Live</span><button class="tg" onclick="theme()">🌓</button><span id="auth"></span></div></div></header>
+<main>
+<div class="kpis" id="kpi"></div>
+<div class="card safe"><span style="font-size:22px">🛡️</span><div><b>Safety boundary.</b> Only operator-verified batches inside an approved handling window can be redistributed. The system re-checks at handover. “Not yet collected” is never treated as safe.</div></div>
+<div class="card bar2"><label>🕒 <input type="range" id="now" min="660" max="1020" step="15" value="810"><span class="clock" id="nv"></span></label>
+<label>🎉 <select id="event"><option value="1">Normal day</option><option value="1.25">Campus fest +25%</option><option value="1.1">Exam week +10%</option><option value="0.6">Holiday −40%</option></select></label>
+<label>🥗 <select id="diet"><option value="any">Any diet</option><option value="veg">Vegetarian</option><option value="vegan">Vegan</option></select></label>
+<span>Exclude:</span><label class="chip"><input type="checkbox" class="al" value="nuts">🥜 nuts</label><label class="chip"><input type="checkbox" class="al" value="dairy">🥛 dairy</label><label class="chip"><input type="checkbox" class="al" value="gluten">🌾 gluten</label></div>
+<div class="card imp" id="imp"></div><div class="al2" id="alr"></div>
+<div class="two"><div class="card mp"><b>🗺️ Campus flow map</b> <span class="kl">live: where surplus is going</span><div id="mp"></div></div>
+<div class="card" id="lf" style="display:none"><b>➕ Log new surplus (operator)</b><p class="kl">New batches start unverified and cannot be redistributed until you verify them.</p><div class="frm"><select id="li"></select><input id="lq" type="number" min="1" placeholder="portions"><button class="p" onclick="addB()">Log batch</button></div></div></div>
+<div class="card" style="margin-bottom:12px"><b>🔌 API contract health</b> <span class="kl">(Constraint 3: tolerant to field renames, nesting, type changes, optional fields)</span><br><label>Simulate API change: <select id="dr" onchange="window.__drift=this.value;load()"><option value="">None (v1 contract)</option><option value="rename">Fields renamed</option><option value="nest">Field moved into nested object</option><option value="type">Types changed (numbers become strings)</option><option value="optional">Fields become optional (missing)</option></select></label><div id="apih"></div></div>
+<h2>📦 Surplus batches</h2><div class="grid" id="bt"></div>
+<h2>📍 Collection points &amp; demand forecast</h2>
+<div class="two"><div class="card" id="pt"></div><div class="card"><div id="ch"></div></div></div>
+<div class="two" style="margin-top:12px"><div class="card"><table id="ft"></table></div><div class="card"><b>Audit log</b> <span class="pill" id="ai" style="--s:var(--ok)"></span><div class="tl" id="au" style="margin:10px 0 0 6px"></div></div></div>
+</main><p style="text-align:center;color:var(--mu);font-size:12px">Standalone demo: runs entirely in your browser with simulated data. <a href="#" onclick="__resetDemo();return false">Reset demo data</a></p>
+<script>
+const L=(function(){const module={exports:{}};const require=()=>({createHash:()=>{let s='';return{update(x){s+=x;return this},digest(){const f=(seed)=>{let a=0xdeadbeef^seed,b=0x41c6ce57^seed;for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^(a>>>16),2246822507)^Math.imul(b^(b>>>13),3266489909);b=Math.imul(b^(b>>>16),2246822507)^Math.imul(a^(a>>>13),3266489909);return(b>>>0).toString(16).padStart(8,'0')+(a>>>0).toString(16).padStart(8,'0')};return f(1)+f(2)+f(3)+f(4)}}}});
+// Pure business logic (no Express) so it can be unit-tested.
+const crypto = require('crypto');
+const COUNTERS = ['Main Hall', 'Engineering Cafe', 'Library Cafe', 'Hostel Mess'];
+const ITEMS = [
+  ['Main Hall','Veg Biryani',[220,240,210,230],300,232,[],'veg'],
+  ['Main Hall','Paneer Curry',[120,130,110,125],180,118,['dairy'],'veg'],
+  ['Engineering Cafe','Chicken Wrap',[80,90,85,95],130,92,['gluten'],'nonveg'],
+  ['Engineering Cafe','Veg Sandwich',[100,95,110,105],140,108,['gluten','dairy'],'veg'],
+  ['Library Cafe','Peanut Cookies',[60,55,65,50],90,58,['nuts','gluten'],'veg'],
+  ['Library Cafe','Fruit Salad',[40,45,35,40],60,41,[],'vegan'],
+  ['Hostel Mess','Dal Rice',[300,310,290,320],400,312,[],'veg'],
+  ['Hostel Mess','Idli',[150,140,160,145],200,148,[],'vegan'],
+  ['Main Hall','Mixed Pulao',[90,95,85,100],120,96,null,'veg'],
+].map(([counter,name,hist,prepared,actual,allergens,diet]) => ({counter,name,hist,prepared,actual,allergens,diet}));
+
+const seed = () => ({
+  batches: [['S1','Veg Biryani',60,720,180,'R. Kumar'],['S2','Paneer Curry',50,730,120,'R. Kumar'],
+    ['S3','Chicken Wrap',30,705,120,'S. Iyer'],['S4','Veg Sandwich',28,735,150,null],
+    ['S5','Peanut Cookies',25,720,360,'S. Iyer'],['S6','Fruit Salad',18,690,90,'S. Iyer'],
+    ['S7','Dal Rice',80,750,180,'M. Das'],['S8','Idli',45,720,null,null],['S9','Mixed Pulao',40,735,150,'R. Kumar']]
+    .map(([id,item,qty,cooked,window,verifiedBy]) => ({id,item,qty,cooked,window,verifiedBy,collected:null})),
+  points: [
+    {name:'Community Fridge (A-Block)',cap:80,load:20,open:true,close:1020,diet:'any',exclude:[],travel:[10,15,5,20]},
+    {name:'NGO Pickup (Gate 2)',cap:120,load:0,open:true,close:840,diet:'any',exclude:[],travel:[15,10,20,25]},
+    {name:'Night Shelter Van',cap:60,load:10,open:true,close:930,diet:'veg',exclude:[],travel:[25,30,25,15]},
+    {name:'Hostel Sharing Shelf',cap:50,load:40,open:true,close:1080,diet:'any',exclude:['nuts'],travel:[20,25,20,5]}],
+  audit: [],
+});
+const hhmm = m => String(Math.floor(m/60)).padStart(2,'0') + ':' + String(m%60).padStart(2,'0');
+const itemOf = b => ITEMS.find(i => i.name === b.item);
+// Allergens: batch-level declaration wins; null/undefined means NOT DECLARED (unknown), never 'none'.
+const algOf = b => { const it = itemOf(b); return b.allergens !== undefined ? b.allergens : (it ? it.allergens : []); };
+
+// ---- forecast: weighted avg + damped trend, x event; 80th-percentile prep recommendation ----
+const W = [4,3,2,1];
+function forecast(it, ev = 1) {
+  const n = it.hist.length, base = it.hist.reduce((a,v,k) => a + v*W[k], 0) / W.reduce((a,b) => a+b);
+  const slope = (it.hist[n-1] - it.hist[0]) / (n-1), mean = it.hist.reduce((a,b) => a+b) / n;
+  const sd = Math.sqrt(it.hist.reduce((a,v) => a + (v-mean)**2, 0) / (n-1));
+  const f = (base + 0.5*slope) * ev;
+  return { forecast: Math.round(f), low: Math.round(f - 1.28*sd*ev), high: Math.round(f + 1.28*sd*ev),
+           recommended: Math.round(f + 0.84*sd*ev), sd: Math.round(sd) };
+}
+
+// ---- SAFETY GATE: sole route to eligibility ----
+function safetyGate(b, now) {
+  if (!b.verifiedBy) return 'Blocked: awaiting operator verification.';
+  if (!(b.window > 0)) return 'Blocked: no approved handling window recorded.';
+  if (algOf(b) === null) return 'Blocked: verified allergen declaration missing.';
+  if (now >= b.cooked + b.window) return `Blocked: approved window ended at ${hhmm(b.cooked + b.window)}.`;
+  return null;
+}
+
+// ---- matching: earliest-expiry first; arrival ties broken by emptier point ----
+function match(st, now, diet = 'any', exclude = []) {
+  const used = st.points.map(() => 0);
+  const order = [...st.batches].sort((a,b) => (a.window ? a.cooked+a.window : 1e9) - (b.window ? b.cooked+b.window : 1e9));
+  const results = order.map(b => {
+    const it = itemOf(b), al = algOf(b), exp = b.window ? b.cooked + b.window : null;
+    const r = { id:b.id, item:b.item, counter:it.counter, qty:b.qty, diet:it.diet, allergens:al,
+                cooked:b.cooked, expiresAt:exp, verifiedBy:b.verifiedBy, placed:[], left:b.qty };
+    if (b.collected) return { ...r, status:'collected', left:0, placed:b.collected, why:`Collected: ${b.collected.map(x=>x.qty+' at '+x.point).join('; ')}.` };
+    if (exp !== null && b.verifiedBy && now >= exp) return { ...r, status:'blocked', why:`Blocked: approved window ended at ${hhmm(exp)}.` };
+    // CONSTRAINT 12: enough info to generate possible actions, not enough to safely choose one.
+    const missing = [];
+    if (!b.verifiedBy) missing.push('operator verification');
+    if (!(b.window > 0)) missing.push('approved handling window');
+    if (al === null) missing.push('verified allergen declaration');
+    if (missing.length) {
+      const c0 = COUNTERS.indexOf(it.counter);
+      const options = st.points.map((p,i) => ({ point:p.name, arrive:now+p.travel[c0], room:p.cap-p.load-used[i], ok:p.open && !(p.diet==='veg' && it.diet==='nonveg') && now+p.travel[c0] <= p.close && (exp===null || now+p.travel[c0] <= exp) && p.cap-p.load-used[i] > 0 }))
+        .filter(o => o.ok).map(({point,arrive,room}) => ({ point, arrive, room }));
+      return { ...r, status:'needsfact', missing, options, why:`Decision withheld. Missing: ${missing.join(', ')}. ${options.length ? options.length + ' possible action(s) listed, but none is chosen because the missing fact decides whether any is safe.' : 'No point is reachable in time either.'}` };
+    }
+    if ((diet==='veg' && it.diet==='nonveg') || (diet==='vegan' && it.diet!=='vegan')) return { ...r, status:'filtered', why:'Excluded by dietary filter.' };
+    const bad = al.filter(a => exclude.includes(a));
+    if (bad.length) return { ...r, status:'filtered', why:'Excluded by allergen filter: ' + bad.join(', ') };
+    const ci = COUNTERS.indexOf(it.counter), rej = [];
+    st.points.map((p,i) => ({p,i,arrive:now+p.travel[ci]}))
+      .sort((a,b) => a.arrive-b.arrive || (a.p.load+used[a.i])/a.p.cap - (b.p.load+used[b.i])/b.p.cap)
+      .forEach(({p,i,arrive}) => {
+        if (r.left <= 0) return;
+        if (!p.open) return rej.push(`${p.name}: closed`);
+        if (arrive > exp) return rej.push(`${p.name}: arrival ${hhmm(arrive)} after window`);
+        if (arrive > p.close) return rej.push(`${p.name}: closes ${hhmm(p.close)}`);
+        if (p.diet==='veg' && it.diet==='nonveg') return rej.push(`${p.name}: veg only`);
+        if (p.exclude.some(a => al.includes(a))) return rej.push(`${p.name}: allergen rule`);
+        const room = p.cap - p.load - used[i];
+        if (room <= 0) return rej.push(`${p.name}: full`);
+        const t = Math.min(room, r.left); used[i] += t; r.left -= t; r.placed.push({ point:p.name, qty:t, arrive });
+      });
+    const status = r.left === 0 ? 'done' : r.placed.length ? 'part' : 'nomatch';
+    return { ...r, status, why:`Verified by ${b.verifiedBy}. ` + r.placed.map(x => `${x.qty} to ${x.point} (arrive ${hhmm(x.arrive)})`).join('; ')
+      + (r.left ? ` ${r.left} unplaced. ` + rej.join('; ') : '') };
+  });
+  return { results, matched: st.points.map((p,i) => ({ ...p, matched: used[i] })) };
+}
+
+// ---- pickup confirmation: gate is RE-CHECKED at the moment of handover ----
+function confirmPickup(st, id, now, actor) {
+  const b = st.batches.find(x => x.id === id); if (!b) throw new Error('batch not found');
+  if (b.collected) throw new Error('already collected');
+  const gate = safetyGate(b, now); if (gate) throw new Error(gate);
+  const r = match(st, now).results.find(x => x.id === id);
+  if (!r.placed.length) throw new Error('no collection point can currently receive this batch');
+  r.placed.forEach(x => { st.points.find(p => p.name === x.point).load += x.qty; });
+  b.collected = r.placed; addAudit(st, actor, `Batch ${id} handed over: ${r.placed.map(x => x.qty+' to '+x.point).join(', ')}`);
+  return r.placed;
+}
+
+// ---- tamper-evident audit log (hash chain) ----
+const hash = (...p) => crypto.createHash('sha256').update(p.join('|')).digest('hex');
+function addAudit(st, actor, msg) {
+  const prev = st.audit.length ? st.audit[st.audit.length-1].hash : 'GENESIS', at = new Date().toISOString();
+  st.audit.push({ at, actor, msg, prev, hash: hash(prev, at, actor, msg) });
+}
+const verifyChain = st => st.audit.every((e,i) => e.prev === (i ? st.audit[i-1].hash : 'GENESIS') && e.hash === hash(e.prev, e.at, e.actor, e.msg));
+
+// ---- analytics ----
+function analytics(st, ev, now) {
+  const items = ITEMS.map(i => ({ ...i, ...forecast(i, ev) }));
+  const mape = f => items.reduce((a,i) => a + Math.abs(f(i) - i.actual) / i.actual, 0) / items.length * 100;
+  const { results } = match(st, now);
+  const confirmed = results.filter(r => r.status === 'collected').reduce((a,r) => a + r.qty, 0);
+  const proposed = results.filter(r => r.status === 'done' || r.status === 'part').reduce((a,r) => a + r.qty - r.left, 0);
+  const overPrep = items.reduce((a,i) => a + Math.max(0, i.prepared - i.actual), 0);
+  const overPrepAfter = items.reduce((a,i) => a + Math.max(0, i.recommended - i.actual), 0);
+  const stockouts = items.filter(i => i.recommended < i.actual).length;
+  return { items, mapeModel: +mape(i => i.forecast).toFixed(1), mapeCurrent: +mape(i => i.prepared).toFixed(1),
+           confirmed, proposed, overPrep, overPrepAfter, stockouts, auditOk: verifyChain(st) };
+}
+module.exports = { COUNTERS, ITEMS, seed, forecast, safetyGate, match, confirmPickup, addAudit, verifyChain, analytics, itemOf, hhmm };
+
+return module.exports})();
+(function(){
+const KEY='cafeteria_state_v1',USERS={operator:{pw:'operator123',role:'operator',name:'Operator'},point:{pw:'point123',role:'point',name:'Collection point'},admin:{pw:'admin123',role:'admin',name:'Administrator'}};
+let st=null;try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!st||!st.batches)st=L.seed();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const J=(o,s)=>Promise.resolve(new Response(JSON.stringify(o),{status:s||200,headers:{'Content-Type':'application/json'}}));
+const realFetch=(window.fetch||(()=>Promise.reject(new Error('no fetch')))).bind(window);
+function __mut(o){const d=window.__drift;if(!d)return o;o=JSON.parse(JSON.stringify(o));
+ if(d=='rename'){o.batches.forEach(b=>{b.expires_at=b.expiresAt;delete b.expiresAt;b.verified_by=b.verifiedBy;delete b.verifiedBy;b.quantity=b.qty;delete b.qty});o.points.forEach(p=>{p.capacity=p.cap;delete p.cap;p.is_open=p.open;delete p.open})}
+ if(d=='nest'){o.batches.forEach(b=>{b.verification={by:b.verifiedBy};delete b.verifiedBy});return{data:o}}
+ if(d=='type'){o.batches.forEach(b=>{b.qty=String(b.qty);b.left=String(b.left);if(b.expiresAt!=null)b.expiresAt=String(b.expiresAt)});o.points.forEach(p=>{p.cap=String(p.cap);p.load=String(p.load);p.open=String(p.open)})}
+ if(d=='optional'){o.batches.forEach(b=>{delete b.allergens;delete b.expiresAt});o.points.forEach(p=>{delete p.open})}
+ return o}
+window.fetch=function(url,opt){opt=opt||{};
+ if(!String(url).startsWith('/api/'))return realFetch(url,opt);
+ const u=new URL(url,'http://x'),p=u.pathname,q=u.searchParams,m=(opt.method||'GET').toUpperCase();
+ const tk=((opt.headers||{}).Authorization||'').slice(7),un=tk.startsWith('tok:')?tk.slice(4):null,me=USERS[un]||null;
+ const b=opt.body?JSON.parse(opt.body):{};
+ const deny=r=>!me?J({error:'please sign in'},401):!r.includes(me.role)?J({error:'requires role: '+r.join(' or ')},403):null;
+ const done=d=>{save();setTimeout(()=>window.__push&&window.__push(),0);return J(d)};
+ let r;
+ if(p=='/api/login'&&m=='POST'){const x=USERS[b.username];return x&&x.pw===b.password?J({token:'tok:'+b.username,role:x.role}):J({error:'invalid credentials'},401)}
+ if(p=='/api/state'){const now=+q.get('now')||810,ev=+q.get('event')||1,ex=(q.get('exclude')||'').split(',').filter(Boolean);
+  const mt=L.match(st,now,q.get('diet')||'any',ex);return J(__mut({me:me&&me.role,batches:mt.results,points:mt.matched,analytics:L.analytics(st,ev,now),audit:st.audit.slice(-12).reverse()}))}
+ if(p=='/api/batches'&&m=='POST'){if(r=deny(['operator']))return r;
+  if(!L.ITEMS.some(i=>i.name===b.item)||!(b.qty>0))return J({error:'valid item and qty required'},400);
+  const nb={id:'S'+(st.batches.length+1),item:b.item,qty:+b.qty,cooked:+b.cooked||720,window:null,verifiedBy:null,collected:null};
+  st.batches.push(nb);L.addAudit(st,me.name,'Batch '+nb.id+' logged (unverified)');return done(nb)}
+ let mm=p.match(/^\/api\/batches\/(\w+)\/(verify|collect)$/);
+ if(mm&&m=='POST'){const bt=st.batches.find(x=>x.id==mm[1]);
+  if(mm[2]=='verify'){if(r=deny(['operator']))return r;if(!bt)return J({error:'not found'},404);if(bt.collected)return J({error:'already collected'},409);
+   if(!b.operator||!(b.windowMinutes>0))return J({error:'operator name and positive handling window required'},400);
+   bt.verifiedBy=b.operator;bt.window=+b.windowMinutes;if(Array.isArray(b.allergens))bt.allergens=b.allergens;L.addAudit(st,me.name,'Batch '+bt.id+' verified by '+b.operator+', window '+b.windowMinutes+' min');return done(bt)}
+  if(r=deny(['point','operator']))return r;
+  try{return done(L.confirmPickup(st,mm[1],+b.now||810,me.name))}catch(e){return J({error:e.message},409)}}
+ mm=p.match(/^\/api\/points\/(\d+)\/toggle$/);
+ if(mm&&m=='POST'){if(r=deny(['point','admin']))return r;const pt=st.points[+mm[1]];if(!pt)return J({error:'not found'},404);
+  pt.open=!pt.open;L.addAudit(st,me.name,pt.name+(pt.open?' reopened':' closed'));return done(pt)}
+ if(p=='/api/reset'&&m=='POST'){st=L.seed();return done({ok:true})}
+ return J({error:'not found'},404)};
+window.EventSource=function(){const o={};Object.defineProperty(o,'onmessage',{set:f=>{window.__push=f}});return o};
+window.__resetDemo=function(){try{localStorage.removeItem(KEY)}catch(e){}location.reload()};
+})();
+
+</script>
+<script>
+const $=id=>document.getElementById(id),T=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+const LB={done:'Matched · awaiting handover',part:'Partly matched',nomatch:'No point free',blocked:'Not eligible',filtered:'Filtered out',collected:'Handed over',needsfact:'Decision needed'};
+const CL={done:'var(--ok)',collected:'var(--ok)',part:'var(--bl)',nomatch:'var(--wa)',filtered:'var(--wa)',blocked:'var(--er)',needsfact:'#8a5cf6'};
+const DI={veg:'🌱 Veg',vegan:'🥬 Vegan',nonveg:'🍗 Non-veg'};
+let tok=localStorage.tok||'',me=null;
+const hd=()=>({'Content-Type':'application/json',Authorization:'Bearer '+tok});
+function theme(){const b=document.body;b.dataset.theme=b.dataset.theme=='dark'?'light':'dark';localStorage.th=b.dataset.theme}
+if(localStorage.th)document.body.dataset.theme=localStorage.th;
+async function load(){
+ const now=+$('now').value;$('nv').textContent=T(now);
+ const ex=[...document.querySelectorAll('.al:checked')].map(x=>x.value).join(',');
+ const s=norm(await (await fetch(`/api/state?now=${now}&event=${$('event').value}&diet=${$('diet').value}&exclude=${ex}`,{headers:hd()})).json());
+ me=s.me;const A=s.analytics,op=me=='operator',pt=me=='point'||me=='operator',ad=me=='point'||me=='admin';
+ $('auth').innerHTML=me?`<span class="live">👤 ${me}</span> <button class="tg" onclick="out()">Sign out</button>`:`<select id="u"><option>operator</option><option>point</option><option>admin</option></select> <input id="p" type="password" placeholder="password" size="9"> <button class="tg" onclick="login()">Sign in</button>`;
+ const blocked=s.batches.filter(b=>b.status=='blocked').reduce((a,b)=>a+b.qty,0);
+ const K=[['✅','Confirmed handovers',A.confirmed,'var(--ok)'],['🤝','Proposed matches',A.proposed,'var(--bl)'],['🛡️','Blocked (unsafe/expired)',blocked,'var(--er)'],['❓','Decision needed',s.batches.filter(b=>b.status=='needsfact').length,'#8a5cf6'],['🎯','Forecast error',A.mapeModel+'% vs '+A.mapeCurrent+'% now','var(--ac)'],['♻️','Over-prep avoided',A.overPrep-A.overPrepAfter+' portions','var(--wa)']];
+ $('kpi').innerHTML=K.map(k=>`<div class="card kpi" style="--c:${k[3]}"><div class="ic">${k[0]}</div><div><div class="kv" style="font-size:${String(k[2]).length>7?18:26}px">${k[2]}</div><div class="kl">${k[1]}</div></div></div>`).join('');
+ $('bt').innerHTML=s.batches.map(b=>{const used=b.expiresAt?Math.max(0,Math.min(1,(now-b.cooked)/(b.expiresAt-b.cooked))):1,left=b.expiresAt?b.expiresAt-now:null;
+  return `<div class="card bc" style="--s:${CL[b.status]}"><div class="t"><div><div class="n">${b.item}</div><div class="m">${b.id} · ${b.counter} · ${b.qty} portions</div></div><span class="pill">${LB[b.status]}</span></div>
+  <div class="tags"><span class="tag">${DI[b.diet]}</span>${b.allergensUnknown?'<span class="tag al">❓ allergens not declared</span>':(b.allergens.map(a=>`<span class="tag al">⚠ ${a}</span>`).join('')||'<span class="tag">no allergens</span>')}<span class="tag">${b.verifiedBy?'✔ '+b.verifiedBy:'unverified'}</span></div>
+  <div><div class="tm"><i style="width:${used*100}%;background:${used>.8?'var(--er)':used>.5?'var(--wa)':'var(--ok)'}"></i></div><div class="m">${b.expiresAt?(left>0?`Window ends ${T(b.expiresAt)} · ${left} min left`:`Window ended ${T(b.expiresAt)}`):'No approved window'}</div></div>
+  <div class="why">${b.why}</div>${b.status=='needsfact'?optsHtml(b):''}
+  <div>${b.status=='needsfact'&&op?`<button class="p" onclick="supply('${b.id}')">Supply missing fact</button>`:''}${pt&&(b.status=='done'||b.status=='part')?`<button class="p" onclick="collect('${b.id}')">Confirm handover</button>`:''}</div></div>`}).join('');
+ $('pt').innerHTML='<b>Live availability</b>'+s.points.map((p,i)=>{const c=p.load/p.cap*100,m=p.matched/p.cap*100;return `<div class="pt"><div style="font-size:22px">${p.open?'🟢':'🔴'}</div><div class="g"><b>${p.name}</b><div class="m kl">${p.diet=='veg'?'veg only · ':''}${p.exclude.length?'no '+p.exclude.join('/')+' · ':''}closes ${T(p.close)} · ${p.load+p.matched}/${p.cap}</div><div class="fill"><i style="width:${c}%;background:var(--mu)"></i><i style="width:${m}%;background:var(--ac)"></i></div></div>${ad?`<button onclick="tog(${i})">${p.open?'Close':'Reopen'}</button>`:''}</div>`}).join('')+'<div class="kl">Grey = already stored · green = proposed now</div>';
+ const mx=Math.max(...A.items.map(i=>Math.max(i.high,i.actual,i.prepared))),sc=v=>v/mx*260;
+ $('ch').innerHTML=`<b>Predicted vs actual</b><svg viewBox="0 0 400 ${A.items.length*22+6}" width="100%">`+A.items.map((i,k)=>`<text x="0" y="${k*22+14}">${i.name}</text><rect x="105" y="${k*22+5}" width="${Math.max(2,sc(i.high-i.low))}" height="12" rx="3" fill="var(--bl)" opacity=".25" transform="translate(${sc(i.low)} 0)"/><rect x="${105+sc(i.forecast)-1}" y="${k*22+3}" width="2.5" height="16" fill="var(--bl)"/><circle cx="${105+sc(i.actual)}" cy="${k*22+11}" r="4.5" fill="var(--ok)"/><rect x="${105+sc(i.prepared)-1}" y="${k*22+3}" width="2.5" height="16" fill="var(--er)"/>`).join('')+`</svg><div class="kl">Blue band = 80% forecast range · blue line = forecast · green dot = actual · red line = prepared</div>`;
+ $('ft').innerHTML='<tr><th>Item</th><th>Forecast</th><th>Actual</th><th>Prepared</th><th>Suggest</th></tr>'+A.items.map(i=>`<tr><td>${i.name}</td><td>${i.forecast}</td><td>${i.actual}</td><td>${i.prepared}</td><td><b>${i.recommended}</b></td></tr>`).join('');
+ $('au').innerHTML=s.audit.map(a=>`<div><b>${a.actor}</b> ${a.msg}<br><small>${a.at.slice(11,19)}</small></div>`).join('')||'<div>No events yet.</div>';
+ $('ai').textContent=A.auditOk?'🔒 chain intact':'⚠ TAMPERED';$('ai').style.setProperty('--s',A.auditOk?'var(--ok)':'var(--er)');extras(s,now,op)}
+
+const CN={'Main Hall':[80,60],'Engineering Cafe':[80,240],'Library Cafe':[250,40],'Hostel Mess':[250,262]},PN={'Community Fridge (A-Block)':[500,55],'NGO Pickup (Gate 2)':[560,150],'Night Shelter Van':[500,245],'Hostel Sharing Shelf':[360,150]};
+function extras(s,now,op){$('apih').innerHTML=DR.length?`<div class="kl" style="color:var(--wa)">⚠ ${DR.length} contract change(s) detected and adapted:</div><ul class="kl">${DR.map(d=>'<li>'+d+'</li>').join('')}</ul>`:'<div class="kl">✅ Response matches the expected contract.</div>';
+ const ok=s.batches.filter(b=>['done','part','collected'].includes(b.status)),por=ok.reduce((a,b)=>a+b.qty-b.left,0),kg=por*0.4;
+ $('imp').innerHTML=`<div><b>${por}</b><small>portions redirected</small></div><div><b>${kg.toFixed(0)} kg</b><small>food kept from waste</small></div><div><b>${(kg*2.5).toFixed(0)} kg</b><small>CO₂e avoided*</small></div><div><b>${s.batches.filter(b=>['blocked','needsfact'].includes(b.status)).length}</b><small>unsafe/unverified batches stopped</small></div><small style="grid-column:1/-1">*Estimate assuming 0.4 kg per portion and 2.5 kg CO₂e per kg of food.</small>`;
+ const al=[];s.batches.filter(b=>b.verifiedBy&&b.status!='collected'&&b.expiresAt-now>0&&b.expiresAt-now<=30).forEach(b=>al.push(`⏰ ${b.id} ${b.item}: window ends in ${b.expiresAt-now} min`));
+ const un=s.batches.filter(b=>!b.verifiedBy).length;if(un)al.push(`🔎 ${un} batch${un>1?'es':''} awaiting operator verification`);
+ $('alr').innerHTML=al.map(a=>`<span>${a}</span>`).join('');
+ let g='<svg viewBox="0 0 620 300" width="100%"><rect x="2" y="2" width="616" height="296" rx="16" fill="none" stroke="var(--bd)"/>';
+ ok.forEach(b=>(b.placed||[]).forEach(x=>{const a=CN[b.counter],c=PN[x.point];if(!a||!c)return;g+=`<line class="${b.status=='collected'?'':'flow'}" x1="${a[0]}" y1="${a[1]}" x2="${c[0]}" y2="${c[1]}" stroke="${b.status=='collected'?'var(--ok)':'var(--ac)'}" stroke-width="${1.5+x.qty/18}" stroke-linecap="round" opacity=".75"/><text x="${(a[0]+c[0])/2}" y="${(a[1]+c[1])/2-4}" text-anchor="middle">${x.qty}</text>`}));
+ Object.entries(CN).forEach(([n,[x,y]])=>{const bl=s.batches.filter(b=>b.counter==n&&['blocked','needsfact'].includes(b.status)).length;g+=`<g class="node"><circle cx="${x}" cy="${y}" r="20" fill="var(--card)" stroke="var(--ac)" stroke-width="2.5"/><text x="${x}" y="${y+6}" text-anchor="middle" style="font-size:18px">🍴</text></g><text x="${x}" y="${y+36}" text-anchor="middle">${n}</text>${bl?`<text x="${x+22}" y="${y-14}" style="font-size:13px">⛔${bl}</text>`:''}`});
+ s.points.forEach(p=>{const [x,y]=PN[p.name]||[0,0];g+=`<g class="node"><circle cx="${x}" cy="${y}" r="20" fill="var(--card)" stroke="${p.open?'var(--bl)':'var(--er)'}" stroke-width="2.5"/><text x="${x}" y="${y+6}" text-anchor="middle" style="font-size:18px">${p.open?'📍':'🚫'}</text></g><text x="${x}" y="${y+36}" text-anchor="middle">${p.name.split(' (')[0]}</text>`});
+ $('mp').innerHTML=g+'</svg>';
+ $('lf').style.display=op?'block':'none';if(!$('li').options.length)$('li').innerHTML=s.analytics.items.map(i=>`<option>${i.name}</option>`).join('')}
+function addB(){const q=+$('lq').value;if(!(q>0))return alert('Enter portions');post('/api/batches',{item:$('li').value,qty:q,cooked:+$('now').value});$('lq').value=''}
+/*NORM*/
+let CUR={};const DR=[];
+const drift=m=>{if(!DR.includes(m))DR.push(m)};
+function pick(o,names,fb,label){if(o)for(const n of names){if(o[n]!==undefined){if(n!==names[0])drift(`${label}: now "${n}" (expected "${names[0]}")`);return o[n]}}drift(`${label}: missing, safe default used`);return fb}
+function num(v,label){if(typeof v==='string')drift(`${label}: string received, converted to number`);const n=+v;return Number.isFinite(n)?n:0}
+function norm(raw){DR.length=0;CUR={};let r=raw||{};if(r.data&&!r.batches){drift('response wrapped in "data" object');r=r.data}
+ const u=pick(r,['me','user'],null,'me'),me=u&&typeof u=='object'?u.role:u;
+ const batches=(pick(r,['batches','surplus'],[],'batches')||[]).map(b=>{
+  const ver=pick(b,['verifiedBy','verified_by','verification'],null,'batch.verifiedBy'),verMissing=b.verifiedBy===undefined&&b.verified_by===undefined&&b.verification===undefined;
+  const vb=ver&&typeof ver=='object'?(drift('batch.verifiedBy moved into nested object'),ver.by||ver.operator||null):ver;
+  const al=pick(b,['allergens','allergen_list'],undefined,'batch.allergens'),exp=pick(b,['expiresAt','expires_at','window_end'],null,'batch.expiresAt');
+  const x={id:String(b.id),item:b.item||'?',counter:b.counter||'?',qty:num(pick(b,['qty','quantity'],0,'batch.qty'),'batch.qty'),left:num(pick(b,['left','remaining'],0,'batch.left'),'batch.left'),diet:b.diet||'veg',allergens:Array.isArray(al)?al:[],allergensUnknown:!Array.isArray(al),cooked:num(b.cooked,'batch.cooked'),expiresAt:exp==null?null:num(exp,'batch.expiresAt'),verifiedBy:vb,placed:Array.isArray(b.placed)?b.placed:[],missing:b.missing||[],options:b.options||[],why:b.why||'',status:pick(b,['status','state'],'needsfact','batch.status')};
+  // Fail safe: if a safety field vanished from the response, never present the batch as cleared.
+  if((al===undefined||verMissing)&&['done','part'].includes(x.status)){x.status='needsfact';x.missing=[al===undefined?'allergen data absent from API response':'verification field absent from API response'];x.options=[];x.why='Held back: a safety field is missing from the API response, so this batch cannot be treated as cleared.'}
+  CUR[x.id]=x;return x});
+ const points=(pick(r,['points'],[],'points')||[]).map(p=>{const o=pick(p,['open','is_open'],false,'point.open');return{name:p.name||'?',cap:num(pick(p,['cap','capacity'],0,'point.cap'),'point.cap'),load:num(p.load,'point.load'),matched:num(p.matched,'point.matched'),open:o===true||o==='true',close:num(pick(p,['close','closes_at'],0,'point.close'),'point.close'),diet:p.diet||'any',exclude:p.exclude||[]}});
+ const a=pick(r,['analytics'],{},'analytics')||{},N=k=>num(a[k]);
+ const analytics={items:(a.items||[]).map(i=>({name:i.name,forecast:num(i.forecast),low:num(i.low),high:num(i.high),actual:num(i.actual),prepared:num(i.prepared),recommended:num(i.recommended)})),confirmed:N('confirmed'),proposed:N('proposed'),overPrep:N('overPrep'),overPrepAfter:N('overPrepAfter'),stockouts:N('stockouts'),mapeModel:N('mapeModel'),mapeCurrent:N('mapeCurrent'),auditOk:a.auditOk!==false};
+ const audit=(r.audit||[]).map(e=>({actor:e.actor||e.by||'?',msg:e.msg||e.message||'',at:String(e.at||'')}));
+ return{me,batches,points,analytics,audit}}
+/*ENDNORM*/
+function optsHtml(b){return `<div class="why" style="border-left:3px solid #8a5cf6;padding-left:8px"><b>Constraint 12: decision withheld.</b><br><b>Missing:</b> ${b.missing.join(', ')||'unknown'}<br><b>Possible actions (none chosen):</b>${b.options.length?b.options.map(o=>`<div>→ ${o.point} · arrive ${T(o.arrive)} · ${o.room} seats</div>`).join(''):'<div>none reachable in time</div>'}</div>`}
+function supply(id){const b=CUR[id];if(!b)return;const need=b.missing||[];const body={operator:b.verifiedBy,windowMinutes:b.expiresAt!=null&&b.cooked?b.expiresAt-b.cooked:0};
+ if(need.some(x=>/verification/.test(x)))body.operator=prompt('Verifying operator name:');
+ if(need.some(x=>/window/.test(x)))body.windowMinutes=+prompt('Approved handling window (minutes):');
+ if(need.some(x=>/allergen/.test(x))){const t=prompt('Declared allergens (comma separated, or none):');if(t===null)return;body.allergens=/^\s*none\s*$/i.test(t)?[]:t.split(',').map(x=>x.trim().toLowerCase()).filter(Boolean)}
+ if(!body.operator||!(body.windowMinutes>0))return;post('/api/batches/'+id+'/verify',body)}
+async function post(u,b){const r=await fetch(u,{method:'POST',headers:hd(),body:JSON.stringify(b||{})});if(!r.ok)alert((await r.json()).error);load()}
+async function login(){const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:$('u').value,password:$('p').value})}),j=await r.json();if(!r.ok)return alert(j.error);tok=localStorage.tok=j.token;load()}
+function out(){tok=localStorage.tok='';load()}
+const tog=i=>post(`/api/points/${i}/toggle`),collect=id=>post(`/api/batches/${id}/collect`,{now:+$('now').value});
+function verify(id){const o=prompt('Verifying operator name:'),w=prompt('Approved handling window (minutes):');if(o&&w)post(`/api/batches/${id}/verify`,{operator:o,windowMinutes:+w})}
+document.querySelectorAll('#now,#event,#diet,.al').forEach(e=>e.oninput=load);
+new EventSource('/api/events').onmessage=load;load();
+</script></body></html>
