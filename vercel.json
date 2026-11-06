@@ -1,9 +1,9 @@
-{
-  "version": 2,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/Invisible-Cafeteria.html"
-    }
-  ]
-}
+   {
+     "version": 2,
+     "builds": [
+       { "src": "Invisible-Cafeteria.html", "use": "@vercel/static" }
+     ],
+     "routes": [
+       { "src": "/(.*)", "dest": "/Invisible-Cafeteria.html" }
+     ]
+   }
